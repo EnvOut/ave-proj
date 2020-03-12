@@ -2,7 +2,7 @@
     http://localhost:8080/swagger-ui.html#/vehicle-controller/
 
 ### How to run
-    ./gradlew run
+    ./gradlew clean build bootRun
 
 ### Requarements
 * JDK 13
