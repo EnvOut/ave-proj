@@ -8,7 +8,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.geo.Point;
 
-import javax.validation.constraints.Pattern;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 
 @Data
 @Builder
@@ -25,6 +26,8 @@ public class VehicleDto {
     private String name;
 
     @JsonProperty
+    @Valid
+    @NotNull
     private VehicleLocation location;
 
     public static VehicleDto from(Vehicle vehicle) {
@@ -42,9 +45,16 @@ public class VehicleDto {
     @ApiModel
     public static class VehicleLocation {
         @JsonProperty
-        private double longitude;
+        @Positive
+        @Max(value = 180)
+        @NotNull
+        private Double longitude;
+
         @JsonProperty
-        private double latitude;
+        @Positive
+        @Max(value = 90)
+        @NotNull
+        private Double latitude;
 
         public static VehicleLocation from(Point point) {
             return new VehicleLocation(point.getX(), point.getY());
