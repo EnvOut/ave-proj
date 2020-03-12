@@ -18,7 +18,7 @@ public class SearchVehicleRepositoryImpl implements SearchVehicleRepository {
     private MongoTemplate mongoTemplate;
 
     @Override
-    public List<Vehicle> findByBox(Point firstPoint, Point secondPoint) {
+    public List<Vehicle> findWithBox(Point firstPoint, Point secondPoint) {
         Box box = new Box(firstPoint, secondPoint);
         Criteria criteria = new Criteria("location").within(box);
 

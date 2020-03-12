@@ -1,5 +1,6 @@
 package com.ave.vehicleservice.domain.vehicle;
 
+import com.ave.vehicleservice.util.RegexpUtil;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
@@ -9,7 +10,10 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.geo.Point;
 
 import javax.validation.Valid;
-import javax.validation.constraints.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Positive;
 
 @Data
 @Builder
@@ -17,8 +21,7 @@ import javax.validation.constraints.*;
 @NoArgsConstructor
 @ApiModel
 public class VehicleDto {
-    @Pattern(regexp = "[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}",
-            message = "Invalid ID format")
+    @Pattern(regexp = RegexpUtil.UUID_REGEXP, message = "Invalid ID format")
     @JsonProperty
     private String id;
 

@@ -63,7 +63,7 @@ public class VehicleRepositoryTest {
 
             Point firstPoint = new Point(50.016123, 36.204586);
             Point secondPoint = new Point(49.958572, 36.288557);
-            List<Vehicle> vehicleList = vehicleRepository.findByBox(firstPoint, secondPoint)
+            List<Vehicle> vehicleList = vehicleRepository.findWithBox(firstPoint, secondPoint)
                     .stream()
                     .sorted(Comparator.comparing(Vehicle::getName))
                     .collect(Collectors.toList());

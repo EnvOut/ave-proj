@@ -6,5 +6,5 @@ import org.springframework.data.geo.Point;
 import java.util.List;
 
 public interface SearchVehicleRepository {
-    List<Vehicle> findByBox(Point firstPoint, Point secondPoint);
+    List<Vehicle> findWithBox(Point firstPoint, Point secondPoint);
 }

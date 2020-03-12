@@ -34,7 +34,7 @@ public class VehicleService {
     }
 
     public List<VehicleDto> findByBox(Point firstPoint, Point secondPoint) {
-        List<Vehicle> results = vehicleRepository.findByBox(firstPoint, secondPoint);
+        List<Vehicle> results = vehicleRepository.findWithBox(firstPoint, secondPoint);
         return toDto(results);
     }
 
